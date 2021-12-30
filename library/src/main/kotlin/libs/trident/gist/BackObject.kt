@@ -16,9 +16,7 @@ import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.facebook.applinks.AppLinkData
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+
 import com.onesignal.OneSignal
 import libs.trident.gist.Utils.createRepoInstance
 import libs.trident.gist.callbacks.BackObjectCallback
@@ -485,7 +483,6 @@ object BackObject {
                     val timezone = TimeZone.getDefault().id
 
                     Log.d("library", "$timezone - time zone from device")
-                    Log.d("library", Firebase.remoteConfig.getString("timezone") + " - time zone from remote config")
                     if(timeZoneData.contains(timezone, true)){
 
                         Log.d("library", " started game cause no naming + timezone causes")
@@ -529,7 +526,6 @@ object BackObject {
                     val timezone = TimeZone.getDefault().id
 
                     Log.d("library", "$timezone - time zone from device")
-                    Log.d("library", Firebase.remoteConfig.getString("timezone") + " - time zone from remote config")
                     if(timeZoneData.contains(timezone, true)){
 
                         Log.d("library", " started game cause no naming + timezone causes")
@@ -659,12 +655,16 @@ object BackObject {
     }
 
     private fun onFailure(t: Throwable, activity: AppCompatActivity) {
+        Log.d("library", t.localizedMessage)
+
         backObjectCallback.startGame()
         activity.finish()
 
     }
 
     private fun onResponse(response: Gist, activity: AppCompatActivity,appsflyerId: String, oneSignalId: String) {
+
+        Log.d("library", response.toString())
 
         when (response.switch) {
 
