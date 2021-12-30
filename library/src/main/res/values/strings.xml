@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="basicUrl">test</string>
+    <string name="secure_get_parametr">test</string>
+    <string name="secure_key">test</string>
+    <string name="dev_tmz_key">test</string>
+    <string name="adb_key">test</string>
+    <string name="autoZone_key">test</string>
+    <string name="vpn_key">test</string>
+    <string name="battery_key">test</string>
+    <string name="model_key">test</string>
+    <string name="manufacture_key">test</string>
+    <string name="lockpin_key">test</string>
+    <string name="gadid_key">test</string>
+    <string name="deeplink_key">test</string>
+    <string name="source_key">test</string>
+    <string name="af_id_key">test</string>
+    <string name="ad_id_key">test</string>
+    <string name="adset_id_key">test</string>
+    <string name="campaign_id_key">test</string>
+    <string name="app_campaign_key">test</string>
+    <string name="adset_key">test</string>
+    <string name="adgroup_key">test</string>
+    <string name="orig_cost_key">test</string>
+    <string name="af_siteid_key">test</string>
+
+    <string name="image_view">Image View</string>
+    <string name="dl_downloading">Downloading file…</string>
+    <string name="dl_downloading2">Downloading File</string>
+    <string name="fl_chooser">File Chooser</string>
+    <string name="went_wrong">Something Went Wrong!</string>
+    <string name="check_connection">Please check your Network Connection!</string>
+    <string name="share_w_friends">Share with your Friends</string>
+
+
+</resources>
