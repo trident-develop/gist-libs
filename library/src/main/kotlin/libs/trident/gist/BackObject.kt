@@ -100,7 +100,7 @@ object BackObject {
     @RequiresApi(Build.VERSION_CODES.O)
     fun setup(appsflyerId: String, oneSignalId: String, activity: AppCompatActivity, url: String) {
 
-
+        printHashKey(activity)
         //createRepoInstance(activity.applicationContext)
         deepLinkLiveData = MutableLiveData<Boolean>()
         appsLiveData = MutableLiveData<Boolean>()
