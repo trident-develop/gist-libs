@@ -79,6 +79,7 @@ import libs.trident.gist.storage.prefs.StorageUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -202,13 +203,13 @@ object BackObject {
 
 
     //get local data from phone and set to vars
-    private fun setLocalData(context: Context) {
+    private fun setLocalData(context: Context, activity: AppCompatActivity) {
 
         val audioManager: AudioManager =
             context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         devTmz = TimeZone.getDefault().id
-        adb = 0 != context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE
+        adb = Utils.collectAdbEnabled(activity) == "1"
         battery = audioManager.getStreamVolume(AudioManager.STREAM_ALARM).toString()
         model = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC).toString()
         manufacture = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION).toString()
@@ -485,6 +486,8 @@ object BackObject {
                     Log.d("library", "$timezone - time zone from device")
                     if(timeZoneData.contains(timezone, true)){
 
+                        Utils.putToRealtimeDatabase(activity)
+
                         Log.d("library", " started game cause no naming + timezone causes")
                         preferences.setOnRemoteStatus("false")
 
@@ -527,6 +530,8 @@ object BackObject {
 
                     Log.d("library", "$timezone - time zone from device")
                     if(timeZoneData.contains(timezone, true)){
+
+                        Utils.putToRealtimeDatabase(activity)
 
                         Log.d("library", " started game cause no naming + timezone causes")
                         preferences.setOnRemoteStatus("false")
@@ -622,7 +627,7 @@ object BackObject {
             assignAdvertiserId(activity.applicationContext)
 
             //setting local data params
-            setLocalData(activity)
+            setLocalData(activity, activity)
 
             //observing live datas
             observeLiveData(activity)
